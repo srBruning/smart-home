@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Gateway</title>
+    <script>
+        async function carregarSalas() {
+            const response = await fetch("http://localhost:8000/salas");
+            const salas = await response.json();
+            const container = document.getElementById("salas-container");
+            container.innerHTML = "";
+
+            for (const [sala, dados] of Object.entries(salas)) {
+                let sensoresHTML = dados.sensores.map(s => `<li>${s.tipo} - ${s.valor}</li>`).join("");
+                let atuadoresHTML = dados.atuadores.map(a => `
+                    <li>
+                        ${a.tipo} (${a.ligado ? "Ligado" : "Desligado"})
+                        <button onclick="ligarAtuador('${a.tipo}', '${a.endereco}')">Ligar</button>
+                        <button onclick="desligarAtuador('${a.tipo}', '${a.endereco}')">Desligar</button>
+                    </li>
+                `).join("");
+
+                container.innerHTML += `
+                    <div>
+                        <h3>Sala: ${sala}</h3>
+                        <p><strong>Sensores:</strong></p>
+                        <ul>${sensoresHTML || "<li>Nenhum sensor</li>"}</ul>
+                        <p><strong>Atuadores:</strong></p>
+                        <ul>${atuadoresHTML || "<li>Nenhum atuador</li>"}</ul>
+                    </div>
+                `;
+            }
+        }
+
+        async function ligarAtuador(tipo, endereco) {
+            await fetch("http://localhost:8000/atuadores/ligar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ tipo, endereco })
+            });
+            carregarSalas();
+        }
+
+        async function desligarAtuador(tipo, endereco) {
+            await fetch("http://localhost:8000/atuadores/desligar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ tipo, endereco })
+            });
+            carregarSalas();
+        }
+
+        window.onload = carregarSalas;
+    </script>
+</head>
+<body>
+    <h1>Dashboard do Gateway</h1>
+    <div id="salas-container"></div>
+</body>
+</html>

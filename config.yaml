@@ -1,0 +1,17 @@
+# Configurações do sistema
+multicast:
+  group: "224.0.0.1"
+  port: 50000
+
+kafka:
+  server: "localhost:9092"
+  topics:
+    - "sensor-temperatura"
+    - "sensor-luminosidade"
+    - "sensor-fumaca"
+
+atuadores:
+  temperatura_padrao: 20.0
+
+geral:
+  verbose: false

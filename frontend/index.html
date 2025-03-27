@@ -1,0 +1,47 @@
+ 
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Salas</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Arquivo CSS local -->
+    <link rel="stylesheet" href="/static/styles.css?v=7">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Controle de Salas</h1>
+
+        <!-- Campo para definir o endereço da API -->
+        <div class="mb-4">
+            <label for="api-url" class="form-label">Endereço da API:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="api-url" placeholder="Ex: http://localhost:8000">
+                <button class="btn btn-primary" onclick="definirEnderecoAPI()">Definir</button>
+            </div>
+        </div>
+  
+        <!-- Seção para exibir as decisões -->
+        <div id="decisoes" class="mt-5">
+            <h2>Últimas Decisões</h2>
+            <ul id="lista-decisoes" class="list-group"></ul>
+        </div>
+
+        <div id="salas">
+            <h2>Salas</h2>
+            <div id="lista-salas" class="row"></div>
+        </div>
+
+    </div>
+
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <!-- Bootstrap JS e dependências -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Arquivo JavaScript local -->
+    <script src="/static/script.js?v=7"></script>
+</body>
+</html>

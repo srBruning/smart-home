@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+#salas {
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+button.ligar {
+    background-color: #28a745;
+    color: white;
+}
+
+button.desligar {
+    background-color: #dc3545;
+    color: white;
+}
+
+button.modo {
+    background-color: #007bff;
+    color: white;
+}
+
+button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+ 
+.ajustar-temperatura button {
+    background-color: #17a2b8;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+.ajustar-temperatura button:hover {
+    background-color: #138496;
+}
+ 
+/* Estilos personalizados */
+.sala {
+    margin-bottom: 20px;
+}
+
+.sensores {
+    margin-bottom: 20px;
+}
+
+.atuador {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.ajustar-temperatura {
+    margin-top: 10px;
+}
+
+.ajustar-temperatura input[type="range"] {
+    width: 100%;
+    margin-right: 10px;
+}
+
+.ajustar-temperatura .temperatura-valor {
+    display: inline-block;
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Estilos para a lista de decisões */
+#decisoes {
+    margin-top: 40px;
+}
+
+#lista-decisoes {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+}
+
+#lista-decisoes .list-group-item {
+    border: none;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#lista-decisoes .list-group-item:last-child {
+    border-bottom: none;
+}

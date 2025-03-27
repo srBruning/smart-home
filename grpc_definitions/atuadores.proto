@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package atuadores;
+
+// Serviço para o Ar-Condicionado
+service ArCondicionado {
+    rpc LigarArCondicionado (ComandoVazio) returns (RespostaAtuador);
+    rpc DesligarArCondicionado (ComandoVazio) returns (RespostaAtuador);
+    rpc SetTemperatura (TemperaturaAtuador) returns (RespostaAtuador);
+    rpc GetTemperatura (ComandoVazio) returns (EstadoTemperaturaAtuador);
+}
+
+// Serviço para a Lâmpada
+service Lampada {
+    rpc LigarLampada (ComandoVazio) returns (RespostaAtuador);
+    rpc DesligarLampada (ComandoVazio) returns (RespostaAtuador);
+    rpc GetEstadoLampada (ComandoVazio) returns (EstadoAtuador);
+}
+
+// Serviço para o Sistema de Controle de Incêndio
+service ControleIncendio {
+    rpc AtivarControleIncendio (ComandoVazio) returns (RespostaAtuador);
+    rpc DesativarControleIncendio (ComandoVazio) returns (RespostaAtuador);
+    rpc GetEstadoControleIncendio (ComandoVazio) returns (EstadoAtuador);
+}
+
+// Mensagens
+message ComandoVazio {}
+
+message RespostaAtuador {
+    string mensagem = 1;
+}
+
+message EstadoAtuador {
+    bool ligado = 1;
+}
+
+message TemperaturaAtuador {
+    double temperatura = 1;
+}
+
+message EstadoTemperaturaAtuador {
+    bool ligado = 1;
+    double temperatura = 2;
+}
